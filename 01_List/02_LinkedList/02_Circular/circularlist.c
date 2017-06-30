@@ -55,7 +55,7 @@ int addCLElement(CircularList* pList, int position, CircularListNode element)
 		}
 		else
         {
-			printf("Index error\n", position);
+			printf("Index error\n");
 		}
 	}
 
@@ -109,7 +109,7 @@ int removeCLElement(CircularList* pList, int position)
 		}
 		else
         {
-			printf("Index error\n", position);
+			printf("Index error\n");
 		}
 	}
 	return ret;
