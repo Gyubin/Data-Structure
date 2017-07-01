@@ -3,15 +3,15 @@
 
 typedef struct DoublyListNodeType
 {
-	int data;
-	struct DoublyListNodeType* pLLink;
-	struct DoublyListNodeType* pRLink;
+    int data;
+    struct DoublyListNodeType* pLLink;
+    struct DoublyListNodeType* pRLink;
 } DoublyListNode;
 
 typedef struct DoublyListType
 {
-	int	currentElementCount;
-	DoublyListNode	headerNode;
+    int	currentElementCount;
+    DoublyListNode	headerNode;
 } DoublyList;
 
 DoublyList* createDoublyList();

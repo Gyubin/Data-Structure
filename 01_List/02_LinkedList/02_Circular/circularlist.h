@@ -3,14 +3,14 @@
 
 typedef struct CircularListNodeType
 {
-	int data;
-	struct CircularListNodeType* pLink;
+    int data;
+    struct CircularListNodeType* pLink;
 } CircularListNode;
 
 typedef struct CircularListType
 {
-	int currentElementCount;
-	CircularListNode* pLink;
+    int currentElementCount;
+    CircularListNode* pLink;
 } CircularList;
 
 CircularList* createCircularList();

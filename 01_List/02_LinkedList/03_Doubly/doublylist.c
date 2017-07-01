@@ -10,14 +10,14 @@ DoublyList* createDoublyList()
 
 	pReturn = (DoublyList *)malloc(sizeof(DoublyList));
 	if (pReturn != NULL)
-    {
+	{
 		memset(pReturn, 0, sizeof(DoublyList));
 
 		pReturn->headerNode.pLLink = &(pReturn->headerNode);
 		pReturn->headerNode.pRLink = &(pReturn->headerNode);
 	}
 	else
-    {
+	{
 		printf("Error in malloc\n");
 		return NULL;
 	}
@@ -30,12 +30,12 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 	int ret = FALSE, i = 0;
 	DoublyListNode *pPreNode = NULL, *pNewNode = NULL, *pTempNode = NULL;
 	if (pList != NULL)
-    {
+	{
 		if (position >= 0 && position <= pList->currentElementCount)
-        {
+		{
 			pNewNode = (DoublyListNode*)malloc(sizeof(DoublyListNode));
 			if (pNewNode == NULL)
-            {
+			{
 				printf("Error in malloc\n");
 				return ret;
 			}
@@ -45,7 +45,7 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 
 			pPreNode = &(pList->headerNode);
 			for(i = 0; i < position; i++)
-            {
+			{
 				pPreNode = pPreNode->pRLink;
 			}
 
@@ -58,7 +58,7 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 			ret = TRUE;
 		}
 		else
-        {
+		{
 			printf("Index error\n");
 		}
 	}
@@ -71,15 +71,15 @@ int removeDLElement(DoublyList* pList, int position)
 	int ret = FALSE;
 	int i = 0, arrayCount = 0;
 	DoublyListNode *pPreNode = NULL, *pDelNode = NULL, *pTempNode = NULL;
-	
+
 	if (pList != NULL)
-    {
+	{
 		arrayCount = getDoublyListLength(pList);
 		if (position >=0 && position < arrayCount)
-        {
+		{
 			pPreNode = &(pList->headerNode);
 			for(i = 0; i < position; i++)
-            {
+			{
 				pPreNode = pPreNode->pRLink;
 			}
 			pDelNode = pPreNode->pRLink;
@@ -106,18 +106,18 @@ DoublyListNode* getDLElement(DoublyList* pList, int position)
 	int i = 0;
 	DoublyListNode* pNode = NULL;
 	if (pList != NULL)
-    {
+	{
 		if (position >=0 && position < pList->currentElementCount)
-        {
+		{
 			pNode = pList->headerNode.pRLink;
 			for(i = 0; i < position; i++)
-            {
+			{
 				pNode = pNode->pRLink;
 			}
 			pReturn = pNode;
 		}
 		else
-        {
+		{
 			printf("Index error\n");
 		}
 	}
@@ -129,16 +129,16 @@ void displayDoublyList(DoublyList* pList)
 {
 	int i = 0;
 	if (pList != NULL)
-    {
+	{
 		printf("Cur el count: %d\n", pList->currentElementCount);
 
 		for(i = 0; i < pList->currentElementCount; i++)
-        {
+		{
 			printf("[%d],%d\n", i, getDLElement(pList, i)->data);
 		}
 	}
 	else
-    {
+	{
 		printf("There is no element.\n");
 	}
 }
@@ -146,7 +146,7 @@ void displayDoublyList(DoublyList* pList)
 void deleteDoublyList(DoublyList* pList)
 {
 	if (pList != NULL)
-    {
+	{
 		clearDoublyList(pList);
 		free(pList);
 	}
@@ -155,9 +155,9 @@ void deleteDoublyList(DoublyList* pList)
 void clearDoublyList(DoublyList* pList)
 {
 	if (pList != NULL)
-    {
+	{
 		while (pList->currentElementCount > 0)
-        {
+		{
 			removeDLElement(pList, 0);
 		}
 	}
@@ -167,7 +167,7 @@ int getDoublyListLength(DoublyList* pList)
 {
 	int ret = 0;
 	if (pList != NULL)
-    {
+	{
 		ret = pList->currentElementCount;
 	}
 	return ret;

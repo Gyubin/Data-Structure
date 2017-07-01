@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		node.data = 5;
 		addCLElement(pList, 2, node);
 		displayCircularList(pList);
-		
+
 		removeCLElement(pList, 0);
 		arrayCount = getCircularListLength(pList);
 		for(i = 0; i < arrayCount; i++)

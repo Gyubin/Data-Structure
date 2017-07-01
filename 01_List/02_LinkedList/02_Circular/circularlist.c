@@ -9,12 +9,12 @@ int addCLElement(CircularList* pList, int position, CircularListNode element)
 	int i = 0;
 	CircularListNode *pPreNode = NULL, *pNewNode = NULL, *pLastNode = NULL;
 	if (pList != NULL)
-    {
+	{
 		if (position >= 0 && position <= pList->currentElementCount)
-        {
+		{
 			pNewNode = (CircularListNode*)malloc(sizeof(CircularListNode));
 			if (pNewNode == NULL)
-            {
+			{
 				printf("Error in malloc\n");
 				return ret;
 			}
@@ -22,17 +22,17 @@ int addCLElement(CircularList* pList, int position, CircularListNode element)
 			pNewNode->pLink = NULL;
 
 			if (position == 0)
-            {
+			{
 				if (pList->currentElementCount == 0)
-                {
+				{
 					pList->pLink = pNewNode;
 					pNewNode->pLink = pNewNode;
 				}
 				else
-                {
+				{
 					pLastNode = pList->pLink;
 					while(pLastNode->pLink != pList->pLink)
-                    {
+					{
 						pLastNode = pLastNode->pLink;
 					}
 					pList->pLink = pNewNode;
@@ -41,10 +41,10 @@ int addCLElement(CircularList* pList, int position, CircularListNode element)
 				}
 			}
 			else
-            {
+			{
 				pPreNode = pList->pLink;
 				for(i = 0; i < position - 1; i++)
-                {
+				{
 					pPreNode = pPreNode->pLink;
 				}
 				pNewNode->pLink = pPreNode->pLink;
@@ -54,7 +54,7 @@ int addCLElement(CircularList* pList, int position, CircularListNode element)
 			ret = TRUE;
 		}
 		else
-        {
+		{
 			printf("Index error\n");
 		}
 	}
@@ -69,23 +69,23 @@ int removeCLElement(CircularList* pList, int position)
 	CircularListNode *pPreNode = NULL, *pDelNode = NULL, *pLastNode = NULL;
 
 	if (pList != NULL)
-    {
+	{
 		arrayCount = getCircularListLength(pList);
 		if (position >=0 && position < arrayCount)
-        {
+		{
 			if (position == 0)
-            {
+			{
 				pDelNode = pList->pLink;
 				if (arrayCount == 1)
-                {
+				{
 					free(pDelNode);
 					pList->pLink = NULL;
 				}
 				else
-                {
+				{
 					pLastNode = pList->pLink;
 					while(pLastNode->pLink != pList->pLink)
-                    {
+					{
 						pLastNode = pLastNode->pLink;
 					}
 					pLastNode->pLink = pDelNode->pLink;
@@ -94,10 +94,10 @@ int removeCLElement(CircularList* pList, int position)
 				}
 			}
 			else
-            {
+			{
 				pPreNode = pList->pLink;
 				for(i = 0; i < position - 1; i++)
-                {
+				{
 					pPreNode = pPreNode->pLink;
 				}
 				pDelNode = pPreNode->pLink;
@@ -108,7 +108,7 @@ int removeCLElement(CircularList* pList, int position)
 			ret = TRUE;
 		}
 		else
-        {
+		{
 			printf("Index error\n");
 		}
 	}
@@ -120,12 +120,12 @@ CircularListNode* getCLElement(CircularList* pList, int position)
 	int i = 0;
 	CircularListNode* pNode = NULL;
 	if (pList != NULL)
-    {
+	{
 		if (position >=0 && position < pList->currentElementCount)
-        {
+		{
 			pNode = pList->pLink;
 			for(i = 0; i < position; i++)
-            {
+			{
 				pNode = pNode->pLink;
 			}
 		}
@@ -141,11 +141,11 @@ CircularList* createCircularList()
 
 	pReturn = (CircularList *)malloc(sizeof(CircularList));
 	if (pReturn != NULL)
-    {
+	{
 		memset(pReturn, 0, sizeof(CircularList));
 	}
 	else
-    {
+	{
 		printf("Error in malloc\n");
 		return NULL;
 	}
@@ -157,15 +157,15 @@ void displayCircularList(CircularList* pList)
 {
 	int i = 0;
 	if (pList != NULL)
-    {
+	{
 		printf("Cur el count: %d\n", pList->currentElementCount);
 		for(i = 0; i < pList->currentElementCount; i++)
-        {
+		{
 			printf("[%d],%d\n", i, getCLElement(pList, i)->data);
 		}
 	}
 	else
-    {
+	{
 		printf("There is no element\n");
 	}
 }
@@ -174,7 +174,7 @@ int getCircularListLength(CircularList* pList)
 {
 	int ret = 0;
 	if (pList != NULL)
-    {
+	{
 		ret = pList->currentElementCount;
 	}
 	return ret;
@@ -183,7 +183,7 @@ int getCircularListLength(CircularList* pList)
 void deleteCircularList(CircularList* pList)
 {
 	if (pList != NULL)
-    {
+	{
 		clearCircularList(pList);
 		free(pList);
 	}
@@ -192,9 +192,9 @@ void deleteCircularList(CircularList* pList)
 void clearCircularList(CircularList* pList)
 {
 	if (pList != NULL)
-    {
+	{
 		while (pList->currentElementCount > 0)
-        {
+		{
 			removeCLElement(pList, 0);
 		}
 	}
