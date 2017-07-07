@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "linkedstack.h"
+#include "exprdef.h"
+#include "exprlinkedstack.h"
 
 LinkedStack* createLinkedStack()
 {
@@ -39,7 +40,8 @@ int pushLS(LinkedStack* pStack, StackNode element)
 			pStack->currentElementCount++;
 			ret = TRUE;
 		}
-		else {
+		else
+		{
 			printf("malloc error\n");
 		}
 	}
@@ -116,24 +118,4 @@ int isLinkedStackEmpty(LinkedStack* pStack)
 	}
 
 	return ret;
-}
-
-void displayLinkedStack(LinkedStack *pStack)
-{
-	StackNode *pNode = NULL;
-	int i = 1;
-	if (pStack != NULL)
-	{
-		printf(": %d\n",
-		pStack->currentElementCount);
-		pNode = pStack->pTopElement;
-		while(pNode != NULL)
-		{
-			printf("[%d]-[%c]\n",
-			pStack->currentElementCount - i,
-			pNode->data);
-			i++;
-			pNode = pNode->pLink;
-		}
-	}
 }
